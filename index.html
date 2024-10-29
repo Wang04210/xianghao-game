@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>五子棋</title>
+    <style>
+        body {
+            background: #f4e4bc url('https://z3.ax1x.com/2021/07/19/WYxvVO.jpg') repeat;
+            font-family: "楷体", KaiTi, serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            text-align: center;
+            width: 100%;
+        }
+        #gameMode {
+            margin: 20px auto;
+            padding: 40px;
+            border: 2px solid #8B4513;
+            max-width: 400px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .button {
+            padding: 15px 40px;
+            font-size: 24px;
+            margin: 15px 0;
+            width: 200px;
+            background: #8B4513;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: "楷体", KaiTi, serif;
+            transition: all 0.3s;
+            box-shadow: 0 3px 5px rgba(0,0,0,0.2);
+        }
+        .button:hover {
+            background: #A0522D;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 8px rgba(0,0,0,0.3);
+        }
+        h2 {
+            color: #8B4513;
+            font-size: 36px;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        .title-decoration {
+            font-size: 28px;
+            color: #8B4513;
+            margin: 0 10px;
+        }
+        #gameArea {
+            display: none;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 800px;
+        }
+        /* 添加一个优雅的分隔线 */
+        .divider {
+            width: 80%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #8B4513, transparent);
+            margin: 10px auto;
+        }
+        .undo-button:disabled {
+            background: #999;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .undo-button:disabled:hover {
+            background: #999;
+            transform: none;
+            box-shadow: 0 3px 5px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="gameMode">
+            <h2><span class="title-decoration">☘</span>五子棋<span class="title-decoration">☘</span></h2>
+            <div class="divider"></div>
+            <button class="button" onclick="startGame('pvp')">双人对弈</button>
+            <button class="button" onclick="startGame('pve')">人机对弈</button>
+        </div>
+        <div id="gameArea">
+            <canvas id="gameBoard" width="600" height="600"></canvas>
+            <br>
+            <button class="button undo-button" onclick="undoMove()">悔棋</button>
+            <button class="button" onclick="restartGame()">重新开局</button>
+            <button class="button" onclick="backToMenu()">返回菜单</button>
+        </div>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html> 
